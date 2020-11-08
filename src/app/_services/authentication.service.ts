@@ -36,7 +36,13 @@ export class AuthenticationService {
                 return response.entity
             }));
     }
-
+    register(user:User) {
+        return this.http.post<any>(`${environment.apiUrl}/user/register`, user)
+            .pipe(map(response => {
+               
+                return response.entity
+            }));
+    }
     logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
